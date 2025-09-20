@@ -26,3 +26,22 @@ def select_two_images():
         img2 = img2.resize(img1.size, Image.Resampling.LANCZOS)
 
     return img1, img2
+
+
+
+def select_image():
+    root = Tk()
+    root.withdraw()
+  
+    image1_path = filedialog.askopenfilename(
+        title="Select Image", 
+        filetypes=[("Image Files", "*.jpg *.png *.jpeg")]
+    )
+
+    if not image1_path:
+        print("Image selection cancelled.")
+        return None
+
+    img1 = Image.open(image1_path).convert("RGB")
+
+    return img1
